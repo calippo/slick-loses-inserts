@@ -1,0 +1,9 @@
+#! /bin/sh
+
+set -x
+set -e
+
+sbt assembly
+
+mv /Users/cale/workdir/rompo/target/scala-2.12/untitled-assembly-0.1.jar rompo.jar
+docker build . -t rompo

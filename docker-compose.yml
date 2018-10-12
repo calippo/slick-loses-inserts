@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: "db"
+    image: mysql:5.6
+    restart: always
+    ports:
+      - 3301:3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: "dbo" 
+
+  rompo:
+    container_name: "rompo"
+    image: rompo
+    depends_on:
+      - db
+    environment:
+      SERVER_NAME: "db"
+      PORT: "3306"
+      
